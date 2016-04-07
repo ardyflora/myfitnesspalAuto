@@ -8,8 +8,8 @@ from selenium.common.exceptions import TimeoutException
 
 driver = webdriver.Chrome()
 url = "https://www.myfitnesspal.com/"
-user_email = 'flora_ripudaman@hotmail.com'
-user_pass = 'suttapride891'
+user_email = 'user@email.com'
+user_pass = 'yourpassword'
 
 
 class MyFitnessPal:

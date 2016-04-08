@@ -41,7 +41,7 @@ class MyFitnessPal:
 			print inst
 
 	def navigateToAddFood(self,driver):
-		statuselement = self.driver.find_element_by_css_selector('#ember1854')
+		statuselement = self.driver.find_element_by_xpath("//*[@class='add-buttons']//a[contains(@href, '/food/diary')]")
 		statuselement.send_keys(Keys.RETURN)
 
 	def selectQuickTool(self,driver,msg):
@@ -54,6 +54,10 @@ class MyFitnessPal:
 
 	def browserClose(self,driver):
 		self.driver.close()
+
+	def saveEntries(self,driver):
+		saveEntries = self.driver.find_element_by_xpath('//*[@id="complete_day"]/span/a')
+		saveEntries.send_keys(Keys.RETURN)
 
 
 #Navigating to the url
@@ -73,6 +77,9 @@ myfitnesspal.selectQuickTool(driver, "//*[@id='main']//div/table/tbody/tr/td/div
 
 #Select copy meal from yesterday
 myfitnesspal.copyMealFromYesterday(driver, "//*[@id='quick_tools_0']//ul/li/a[contains(@href, '/food/copy_meal')]")
+
+#Save the entries
+myfitnesspal.saveEntries(driver)
 
 # Closing the current Browser
 myfitnesspal.browserClose(driver)

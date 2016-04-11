@@ -8,8 +8,8 @@ from selenium.common.exceptions import TimeoutException
 
 driver = webdriver.Firefox()
 url = "https://www.myfitnesspal.com/"
-user_email = 'useremailaddress'
-user_pass = 'userpassword'
+user_email = 'user@email'
+user_pass = 'password'
 
 
 class MyFitnessPal:
@@ -56,7 +56,7 @@ class MyFitnessPal:
 		self.driver.close()
 
 	def saveEntries(self,driver):
-		saveEntries = self.driver.find_element_by_xpath('//*[@id='complete_day']/span/a[contains(@href, '/food/day_complete')]")
+		saveEntries = self.driver.find_element_by_xpath("//*[@id='complete_day']/span/a[contains(@href, '/food/day_complete')]")
 		saveEntries.send_keys(Keys.RETURN)
 
 

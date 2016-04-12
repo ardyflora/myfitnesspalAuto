@@ -6,9 +6,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
 
-driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 url = "https://www.myfitnesspal.com/"
-user_email = 'user@email'
+user_email = 'user@email.com'
 user_pass = 'password'
 
 
@@ -56,9 +56,12 @@ class MyFitnessPal:
 		self.driver.close()
 
 	def saveEntries(self,driver):
-		saveEntries = self.driver.find_element_by_xpath("//*[@id='complete_day']/span/a[contains(@href, '/food/day_complete')]")
+		saveEntries = self.driver.find_element_by_xpath("//*[@id='complete_day']/span/a[contains(@class, 'button complete-this-day-button')]")
 		saveEntries.send_keys(Keys.RETURN)
 
+	def waterIntake(self,driver):
+		waterIntake = self.driver.find_element_by_xpath("//*[@id='water_cups']/p/a[contains(@class, 'up')]")
+		waterIntake.send_keys(Keys.RETURN)
 
 #Navigating to the url
 myfitnesspal = MyFitnessPal(driver,url,user_email,user_pass)
@@ -80,6 +83,9 @@ myfitnesspal.copyMealFromYesterday(driver, "//*[@id='quick_tools_0']//ul/li/a[co
 
 #Save the entries
 myfitnesspal.saveEntries(driver)
+
+#Entry for water intake
+myfitnesspal.waterIntake(driver)
 
 # Closing the current Browser
 myfitnesspal.browserClose(driver)
